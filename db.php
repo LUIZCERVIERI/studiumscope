@@ -1,0 +1,16 @@
+<?php
+function getConnection() {
+    $host_db = 'aws-0-us-east-1.pooler.supabase.com';
+    $port_db = '6543';
+    $nome_db = 'postgres';
+    $usuario_db = 'postgres.klrmaxbiqcoxsvbtklrw';
+    $senha_db = 'studium1145';
+
+    try {
+        $pdo = new PDO("pgsql:host=$host_db;port=$port_db;dbname=$nome_db", $usuario_db, $senha_db);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $pdo;
+    } catch (PDOException $e) {
+        die("Erro de conexão: " . $e->getMessage());
+    }
+}
