@@ -22,22 +22,44 @@ switch ($acao) {
 }
 class AuthController {
 
+    public function cadastrar() {
+
+        include "_cabecalho.php";
+        include 'cadastro.php';
+        include "_rodape.php";
+        
+    }
+
     public function index() {
+        $this->login();
       
     }
 
     public function login(){
+
+        include "_cabecalho.php";
+        include 'login.php';
+        include "_rodape.php";
         
     }
 
-
-    public function cadastrar() {
+   public function salvar() {
+        $pdo = getConnection();
         
+        $nome = $_POST['nome'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $senha = $_POST['senha'] ?? '';
+
+        $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)");
+        
+        header("Location: login.php");
     }
 
     public function sair() {
+        session_destroy();
+        header("Location: login.php");
+        exit;
     
     }
-
 
 }
