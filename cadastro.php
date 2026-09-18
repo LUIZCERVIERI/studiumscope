@@ -1,6 +1,6 @@
 <div class="card mt-5">
     <div class="card-body">
-        <form method="post" action="?acao=salvar">
+        <form method="post" action="authController.php?acao=salvar">
             
             <label class="form-label">Nome:</label>
             <input class="form-control" type="text" name="nome"

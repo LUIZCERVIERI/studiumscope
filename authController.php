@@ -39,25 +39,25 @@ class AuthController {
     }
 
     public function login() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $pdo = getConnection();
-            $email = $_POST['email'] ?? '';
-            $senha = $_POST['senha'] ?? '';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $pdo = getConnection();
+        $email = $_POST['email'] ?? '';
+        $senha = $_POST['senha'] ?? '';
 
-            $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email AND senha = :senha");
-            $stmt->execute([':email' => $email, ':senha' => $senha]);
-            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email AND senha = :senha");
+        $stmt->execute([':email' => $email, ':senha' => $senha]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($usuario) {
-                $_SESSION['usuario_id'] = $usuario['id'];
-                header("Location: home.php");
-                exit;
-            }
+        if ($usuario) {
+            $_SESSION['usuario_id'] = $usuario['id'];
+            header("Location: home.php");
+            exit;
         }
+    }
 
-        include "_cabecalho.php";
-        include 'login.php';
-        include "_rodape.php";
+    include "_cabecalho.php";
+    include 'login.php';
+    include "_rodape.php";
     }
 
     public function salvar() {
