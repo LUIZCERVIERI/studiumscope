@@ -10,7 +10,7 @@
             <input class="form-control" type="password" name="senha"
                    value="<?= $dado["senha"] ?? '' ?>" required autofocus>
 
-            <a class="btn btn-link mt-4" href="cadastro.php" >Cadastrar</a>
+            <a class="btn btn-link mt-4" href="?acao=cadastrar" >Cadastrar</a>
             <button class="btn btn-primary mt-4" type="submit">Entrar</button>
         </form>
     </div>
